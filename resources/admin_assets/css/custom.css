@@ -1,0 +1,94 @@
+.sidebar .sidebar-menu {
+    padding: 0.50rem !important;
+}
+
+.sidebar .sidebar-menu>ul>li>a {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+
+.sidebar .sidebar-menu>ul>li>a span {
+    font-weight: 600;
+}
+
+.sidebar .sidebar-menu>ul>li {
+    margin-bottom: 5px !important;
+}
+
+
+/* .header .header-left {
+    width: 200px !important;
+}
+
+.sidebar {
+    width: 200px !important;
+}
+
+.page-wrapper {
+    margin-left: 200px !important;
+} */
+
+.page-wrapper .content {
+    padding: 8px !important;
+}
+
+
+.table tbody tr td {
+    padding: 1px !important;
+}
+
+
+.table thead th {
+    padding: 10px 1px !important;
+}
+
+
+
+.dropzone__item {
+    margin: 4px !important;
+}
+
+.dropzone__item-thumbnail {
+    border-radius: 10px !important;
+
+}
+
+.dropzone__item--style {
+    border: 1px solid #d4d2d2;
+    border-radius: 10px;
+    margin: 5px 4px;
+
+}
+
+.gg-close {
+    opacity: 0;
+}
+
+
+.card-body {
+    padding: 0 1.25rem !important;
+}
+
+
+.attrValModal {
+    height: 300px;
+    overflow-y: auto;
+}
+
+
+.attrValModal::-webkit-scrollbar {
+    width: 8px;
+
+}
+
+.attrValModal::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent, #008069);
+    border-radius: 6px;
+
+}
+
+
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected {
+    color: #008069 !important;
+}
