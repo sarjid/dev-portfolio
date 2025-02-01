@@ -1,9 +1,10 @@
 <script setup>
-import WebsiteNavbar from "@/Layouts/WebsiteNavbar.vue";
-import ColorMode from "@/Components/Website/Theme/ColorMode.vue";
 import { computed, onMounted, ref, watch } from "vue";
 import { usePage, Link } from "@inertiajs/vue3";
 import VCodeBlock from "@wdns/vue-code-block";
+import WebsiteNavbar from "@/Layouts/WebsiteNavbar.vue";
+import ColorMode from "@/Components/Website/Theme/ColorMode.vue";
+import Menu from "@/Components/Website/Menu.vue";
 
 const code = ref(`  const coder = {
             name:'Habil',
@@ -64,40 +65,16 @@ const updateFavicon = () => {
   }
 };
 
-// onMounted(() => {
-//   updateFavicon();
-// });
-
-
-
-
-
-
-const scrollToSection = (sectionId) => {
-  const section = document.getElementById(sectionId);
-  if (section) {
-    window.scrollTo({
-      top: section.offsetTop - 50, // Adjust if you have a fixed header
-      behavior: "smooth",
-    });
-  }
-};
-
-// Optional: Highlight Active Section on Scroll
 onMounted(() => {
-    updateFavicon();
-  const links = document.querySelectorAll("nav a");
-  window.addEventListener("scroll", () => {
-    let scrollPosition = window.scrollY + 100;
-    links.forEach((link) => {
-      const section = document.getElementById(link.getAttribute("href")?.substring(1));
-      if (section && section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
-        links.forEach((l) => l.classList.remove("active"));
-        link.classList.add("active");
-      }
-    });
-  });
+  updateFavicon();
 });
+
+const isMenuOpen = ref(false);
+const toggleMenu = ()=>{
+    isMenuOpen.value = !isMenuOpen.value;
+}
+
+
 </script>
 
 <template>
@@ -143,30 +120,21 @@ onMounted(() => {
               <img src="frontend/img/logo/logo-dark.png" alt="" />
             </Link>
           </div>
-          <!-- <div class="header-info-list d-none d-md-inline-block">
-            <ul class="ul-reset">
-              <li><a href="mailto:mail@gerolddesign.com">mail@gerolddesign.com</a></li>
-            </ul>
-          </div> -->
-          <div class="header-menu d-none d-lg-block" id="headerMenu">
+          <div class="header-menu d-none d-lg-block" id="headerMenu" >
             <nav>
-              <ul>
-                <li><a href="#" @click.prevent="scrollToSection('about-section')">About</a></li>
-                <li><a href="#" @click.prevent="scrollToSection('education-section')">Education</a></li>
-                <li><a href="#" @click.prevent="scrollToSection('skills-section')">Skills</a></li>
-                <li><a href="#" @click.prevent="scrollToSection('works-section')">Projects</a></li>
-                <li><a href="#" @click.prevent="scrollToSection('contact-section')">Contact</a></li>
-
-              </ul>
+              <Menu/>
             </nav>
           </div>
-          <div class="mobile-menu d-lg-none"></div>
+            <div class="mobile-menu d-lg-none mean-container"  :class="{'opened':isMenuOpen}">
+                <nav class="mean-nav">
+                   <Menu @status="toggleMenu"/>
+                </nav>
+            </div>
           <div class="header-button">
-            <!-- <a href="#" class="btn tj-btn-primary">Hire Me !</a> -->
             <ColorMode />
           </div>
-          <div class="menu-bar d-lg-none">
-            <button>
+          <div class="menu-bar d-lg-none" :class="{'menu-bar-toggeled':isMenuOpen}">
+            <button @click.prevent="toggleMenu">
               <span></span>
               <span></span>
               <span></span>
