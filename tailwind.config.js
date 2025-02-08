@@ -32,7 +32,7 @@ export default {
                 "media-max-w-lg": { max: "1199.98px" },
             },
             colors: {
-                themePrimary: "#8750f7",
+                themePrimary: "#0f0715",
                 themeCancel: "#637381",
                 borderCard: "rgba(0,0,0,.125)",
                 borderDropdown: "rgba(0,0,0,.15)",

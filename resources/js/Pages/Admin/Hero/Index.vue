@@ -42,39 +42,37 @@ const onSubmit = () => {
                     <form @submit.prevent="onSubmit">
                         <div class="md:grid md:grid-cols-2 gap-x-6">
                             <div class="form-group">
+                                <VInputLabel for="name" value="Name" />
+                                <PlainTextInput type="text" v-model="form.data.name" name="name"
+                                placeholder="john doe" />
+                            </div>
+
+                            <div class="form-group">
                                 <VInputLabel for="title" value="Title" />
-                                <textarea class="form-control" v-model="form.data.title" placeholder="title"></textarea>
+                                <PlainTextInput type="text" v-model="form.data.title" name="title"
+                                placeholder="For Professional Software Developer" />
+                            </div>
+
+                            <div class="form-group">
+                                <VInputLabel for="description" value="description" />
+                                <textarea class="form-control" v-model="form.data.description" placeholder="lead paragraph"></textarea>
                             </div>
 
 
                             <div class="form-group">
-                                <VInputLabel for="short_descp" value="short_descp" />
-                                <textarea class="form-control" v-model="form.data.short_descp"
-                                    placeholder="short description"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <VInputLabel for="video_url" value="video_url" />
-                                <PlainTextInput type="text" v-model="form.data.video_url" name="video_url"
-                                    placeholder="video url" />
+                                <VInputLabel for="code_snippet" value="code_snippet" />
+                                <textarea class="form-control" v-model="form.data.code_snippet"
+                                    placeholder="Code for VCodeBlock"></textarea>
                             </div>
 
 
-
-
                             <div class="form-group">
-                                <VInputLabel for="image_one" value="First Image (w-350*h-390px)" />
-                                <input @input="(form.data.image_one = $event.target.files[0])" type="file"
+                                <VInputLabel for="cv_link" value="CV Pdf" />
+                                <input @input="(form.data.cv_link = $event.target.files[0])" type="file"
                                     class="form-control">
-                                <img :src="hero?.img_url_one" class="h-20 w-20" />
+                                <img :src="hero?.cv_link" class="h-20 w-20" />
                             </div>
 
-                            <div class="form-group">
-                                <VInputLabel for="image_two" value="Second Image (w-350*h-390px)" />
-                                <input @input="(form.data.image_two = $event.target.files[0])" type="file"
-                                    class="form-control">
-                                <img :src="hero?.img_url_two" class="h-20 w-20" />
-                            </div>
                         </div>
 
                         <div class="mt-2">

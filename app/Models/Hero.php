@@ -19,19 +19,29 @@ class Hero extends Model
      */
     protected $guarded = [];
 
-    protected $appends = ['img_url_one', 'img_url_two'];
 
-    protected function imgUrlOne(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => url($this->image_one)
-        );
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'social_links' => 'array',
+    ];
 
-    protected function imgUrlTwo(): Attribute
-    {
-        return Attribute::make(
-            get: fn () => url($this->image_two)
-        );
-    }
+    // protected $appends = ['img_url_one', 'img_url_two'];
+
+    // protected function imgUrlOne(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn () => url($this->image_one)
+    //     );
+    // }
+
+    // protected function imgUrlTwo(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn () => url($this->image_two)
+    //     );
+    // }
 }

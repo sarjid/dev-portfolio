@@ -13,9 +13,7 @@ const scrollToSection = (sectionId) => {
   }
 };
 
-// Optional: Highlight Active Section on Scroll
 onMounted(() => {
-
   const links = document.querySelectorAll("nav a");
   window.addEventListener("scroll", () => {
     let scrollPosition = window.scrollY + 100;

@@ -6,21 +6,25 @@ import WebsiteNavbar from "@/Layouts/WebsiteNavbar.vue";
 import ColorMode from "@/Components/Website/Theme/ColorMode.vue";
 import Menu from "@/Components/Website/Menu.vue";
 
-const code = ref(`  const coder = {
-            name:'Habil',
-                skills:['Php', 'Laravel', 'Vuejs', 'Vue Router',
-                        'Vuex','Pinia','Nuxtjs', 'MySql'],
-                hardWorker: true,
-                quickLearner: true,
-                problemSolver: true,
-                hireable: function() {
-                    return (
-                        this.hardWorker&&
-                        this.problemSolver&&
-                        this.skills.length>=5
-                    );
-            };
-    };`);
+const code = ref(` const coder = {
+    name: "Habil",
+    skills: [
+        "PHP", "Laravel", "Vue.js", "Vue Router",
+        "Vuex", "Pinia", "Nuxt.js", "Inertia.js"
+      ],
+    hardWorker: true,
+    quickLearner: true,
+    problemSolver: true,
+    hireable() {
+        return this.hardWorker &&
+        this.problemSolver &&
+        this.skills.length >= 5;
+    }
+};
+
+console.log(\`Hireable: \${coder.hireable() ? "Yes" : "No"}\`);
+`);
+
 const page = usePage();
 
 const whiteLogo = computed(() => {
@@ -187,8 +191,8 @@ const toggleMenu = ()=>{
               </div>
 
               <p class="lead">
-                I break down complex user experinece problems to create integritiy
-                focussed solutions that connect billions of people
+                I transform complex challenges into seamless digital experiences,
+                crafting intuitive and scalable solutions that empower millions.
               </p>
               <div class="button-box d-flex flex-wrap align-items-center">
                 <a href="#" class="btn tj-btn-secondary"
@@ -267,8 +271,6 @@ const toggleMenu = ()=>{
     </section>
     <!-- HERO SECTION END -->
 
-
-
     <!-- EDUCATION SECTION START -->
     <section class="resume-section" id="education-section">
       <div class="container">
@@ -279,7 +281,7 @@ const toggleMenu = ()=>{
             </h2>
           </div>
           <div class="col-md-7">
-            <img src="/frontend/img/education.png" class="img-size" alt="" />
+            <img src="/frontend/img/education.png" class="img-fluid" alt="" />
           </div>
 
           <div class="col-md-5">
@@ -316,28 +318,14 @@ const toggleMenu = ()=>{
           <div class="col-md-12">
             <div class="section-header text-center">
               <h2 class="section-title">My Skills</h2>
-              <!-- <p class="wow fadeInUp">
-                We put your ideas and thus your wishes in the form of a unique web project
-                that inspires you and you customers.
-              </p> -->
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div
-              class="skills-widget d-flex flex-wrap justify-content-center align-items-center"
-            >
-              <!-- <div class="rfm-initial-child-container"> -->
+              class="skills-widget d-flex flex-wrap justify-content-center align-items-center">
               <Vue3Marquee :pauseOnHover="true">
-                <!-- <div class="skill-item" v-for="(data, index) in 5" :key="index">
-                  <div class="skill-inner">
-                    <div class="icon-box">
-                      <img src="frontend/img/icons/skills-1.svg" alt="" />
-                    </div>
-                    <div class="number">HTML</div>
-                  </div>
-                </div> -->
 
                 <div class="skill-item">
                   <div class="skill-inner">
@@ -498,9 +486,8 @@ const toggleMenu = ()=>{
             </h2>
           </div>
           <div class="col-md-6">
-            <img src="/frontend/img/experience.png" class="img-size" alt="" />
+            <img src="/frontend/img/experience.png" class="img-fluid" alt="" />
           </div>
-
           <div class="col-md-6">
             <div class="resume-widget">
               <div class="resume-item">

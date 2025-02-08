@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('heroes', function (Blueprint $table) {
             $table->id();
-            $table->tinyText('title')->nullable();
-            $table->text('short_descp')->nullable();
-            $table->string('video_url')->nullable();
-            $table->string('image_one')->nullable();
-            $table->string('image_two')->nullable();
+            $table->string('name'); // For "Habil"
+            $table->string('title'); // For "Professional Software Developer."
+            $table->text('description'); // For the lead paragraph
+            $table->string('cv_link')->nullable(); // For the Download CV link
+            $table->json('social_links')->nullable(); // Store social media links as JSON
+            $table->text('code_snippet')->nullable(); // Code for VCodeBlock
             $table->timestamps();
         });
     }
