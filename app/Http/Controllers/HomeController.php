@@ -16,8 +16,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-
         // return Setting::all();
         return Inertia::render('Index', [
             'hero' => Hero::first(),
@@ -71,5 +69,17 @@ class HomeController extends Controller
         return Inertia::render('Billing', [
             'pricing' => $pricing
         ]);
+    }
+
+
+    public function downloadCv()
+    {
+
+        $hero = Hero::first();
+        if (!$hero || !file_exists(public_path($hero->cv_link))) {
+            return back()->with('error', 'File not found.');
+        }
+
+        return response()->download(public_path($hero->cv_link));
     }
 }

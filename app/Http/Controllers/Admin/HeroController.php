@@ -15,11 +15,9 @@ class HeroController extends Controller
     public function index()
     {
         return Inertia::render('Admin/Hero/Index', [
-            'hero' => Hero::select('id', 'title', 'short_descp', 'video_url', 'image_one', 'image_two')->first()
+            'hero' => Hero::select('id', 'name', 'title', 'description', 'social_links', 'code_snippet', 'my_image', 'my_description')->first()
         ]);
     }
-
-
 
 
 
@@ -30,22 +28,32 @@ class HeroController extends Controller
     {
         try {
             $hero = Hero::first();
-            if ($request->hasFile('image_one')) {
-                @unlink($hero->image_one);
-                $imgOneUrl = uploadFile($request->file('image_one'), 350, 390, 'media/hero/');
+
+            if ($request->hasFile('my_image')) {
+                @unlink($hero->my_image);
+                $myImgUrl = uploadFile($request->file('my_image'), 350, 390, 'uploads/hero/');
             }
-            if ($request->hasFile('image_two')) {
-                @unlink($hero->image_two);
-                $imgTwoUrl = uploadFile($request->file('image_two'), 350, 390, 'media/hero/');
+            if ($request->hasFile('cv_link')) {
+                $requestPDf = $request->cv_link;
+                $fileName = 'cv' . '_' . time() . '.' . $requestPDf->extension();
+                $path = 'uploads/hero';
+                if (file_exists(public_path($hero->cv_link))) {
+                    @unlink(public_path($hero->cv_link));
+                }
+                $requestPDf->move(public_path($path), $fileName);
+                $savePdfUrl = $path .'/'. $fileName;
             }
             Hero::updateOrCreate(
                 ['id' => 1],
                 [
+                    'name' => $request->name,
                     'title' => $request->title,
-                    'short_descp' => $request->short_descp,
-                    'video_url' => $request->video_url,
-                    'image_one' =>   $request->file('image_one') ? $imgOneUrl : $hero->image_one,
-                    'image_two' =>   $request->file('image_two') ? $imgTwoUrl : $hero->image_two,
+                    'description' => $request->description,
+                    'social_links' => $request->social_links,
+                    'cv_link' => $savePdfUrl ?? $hero->cv_link,
+                    'code_snippet' => $request->code_snippet,
+                    'my_description' => $request->my_description,
+                    'my_image' => $myImgUrl ?? $hero->my_image
                 ]
             );
 
@@ -55,4 +63,7 @@ class HeroController extends Controller
             throw $e;
         }
     }
+
+
+
 }

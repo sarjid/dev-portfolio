@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('cv_link')->nullable(); // For the Download CV link
             $table->json('social_links')->nullable(); // Store social media links as JSON
             $table->text('code_snippet')->nullable(); // Code for VCodeBlock
+            $table->text('my_description')->nullable(); // Code for VCodeBlock
+            $table->string('my_image')->nullable(); // Code for VCodeBlock
             $table->timestamps();
         });
     }

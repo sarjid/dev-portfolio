@@ -26,6 +26,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/contact-form',  'contactStore')->name('contact.store');
     Route::get('/team',  'team')->name('team.page');
     Route::get('/billing/{pricing:slug}',  'billing')->name('billing.page');
+    Route::get('/download-cv',  'downloadCv')->name('download.cv');
 });
 
 

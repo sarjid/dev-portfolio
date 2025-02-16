@@ -1,0 +1,19 @@
+{
+    "social_links": [
+        {
+            "platform": "Twitter",
+            "url": "https://x.com",
+            "icon": "fa-brands fa-twitter"
+        },
+        {
+            "platform": "LinkedIn",
+            "url": "https://x.com",
+            "icon": "fa-brands fa-linkedin-in"
+        },
+        {
+            "platform": "Github",
+            "url": "https://github.com",
+            "icon": "fa-brands fa-github"
+        }
+    ]
+}
